@@ -1,0 +1,8 @@
+{
+  "name": "multi-snake",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "@nestjs/cli": "^7.5.4"
+  }
+}
