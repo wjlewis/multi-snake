@@ -4,6 +4,7 @@ import { JoinInfo } from './types/join-info';
 import { Denizen } from './types/denizen';
 import { HandleInfo } from './types/handle-info';
 import { VacancyInfo } from './types/vacancy-info';
+import { LeaveInfo } from './types/leave-info';
 
 @Controller('den')
 export class DenController {
@@ -12,6 +13,11 @@ export class DenController {
   @Post('join')
   join(@Body() info: JoinInfo): Denizen {
     return this.den.join(info);
+  }
+
+  @Post('leave')
+  leave(@Body() info: LeaveInfo): Denizen {
+    return this.den.leave(info);
   }
 
   @Get('vacancy')

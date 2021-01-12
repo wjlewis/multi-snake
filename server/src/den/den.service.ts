@@ -4,6 +4,7 @@ import { JoinInfo } from './types/join-info';
 import { Denizen } from './types/denizen';
 import { HandleInfo } from './types/handle-info';
 import { VacancyInfo } from './types/vacancy-info';
+import { LeaveInfo } from './types/leave-info';
 
 @Injectable()
 export class DenService {
@@ -18,6 +19,20 @@ export class DenService {
 
     const denizen = { id: uuid(), handle };
     this.den.push(denizen);
+
+    return denizen;
+  }
+
+  leave(info: LeaveInfo): Denizen {
+    const { id } = info;
+
+    const index = this.den.findIndex(d => d.id === id);
+    if (index < 0) {
+      throw new BadRequestException(`This denizen doesn't exist.`);
+    }
+
+    const denizen = this.den[index];
+    this.den.splice(index, 1);
 
     return denizen;
   }
